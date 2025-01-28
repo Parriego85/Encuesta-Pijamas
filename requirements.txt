@@ -1,0 +1,6 @@
+streamlit
+streamlit_image_select
+pandas
+numpy
+pillow
+
