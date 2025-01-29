@@ -92,21 +92,25 @@ st.markdown(
 
 
 # Configurar estado inicial
+# Configurar estado inicial
+st.set_page_config(page_title="Encuesta de Pijamas Quirúrgicas", 
+                   layout="centered", initial_sidebar_state="collapsed", theme={"base": "light"})
 if 'mostrar_encuesta' not in st.session_state:
     st.session_state.mostrar_encuesta = False
 
 # Título e introducción
 st.markdown('<div class="title">Encuesta de Pijamas Quirúrgicas</div>', unsafe_allow_html=True)
-st.write("""
-Estamos diseñando prendas que se ajusten a las necesidades reales de quienes trabajan o estudian en el sector médico.
-Tu opinión será clave para crear productos únicos, prácticos y personalizados.
-""")
-st.markdown('<div class="subtitle">¡Participa en nuestra encuesta y sé parte del cambio!</div>', unsafe_allow_html=True)
+if not st.session_state.mostrar_encuesta:
+    st.write("""
+    Estamos diseñando prendas que se ajusten a las necesidades reales de quienes trabajan o estudian en el sector médico.
+    Tu opinión será clave para crear productos únicos, prácticos y personalizados.
+    """)
+    st.markdown('<div class="subtitle">¡Participa en nuestra encuesta y sé parte del cambio!</div>', unsafe_allow_html=True)
+    if st.button("🚀 Comenzar Encuesta"):
+        st.session_state.mostrar_encuesta = True
+        st.rerun()
 
-# Botón de inicio
-if st.button("🚀 Comenzar Encuesta"):
-    st.session_state.mostrar_encuesta = True
-
+# Separador si la encuesta ha comenzado
 if st.session_state.mostrar_encuesta:
     st.write("---")
 
