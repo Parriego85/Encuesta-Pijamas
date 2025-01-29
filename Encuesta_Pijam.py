@@ -3,6 +3,10 @@ import pandas as pd
 import numpy as np
 from PIL import Image
 from streamlit_image_select import image_select
+# Configurar la página antes de cualquier otro comando de Streamlit
+st.set_page_config(page_title="Encuesta de Pijamas Quirúrgicas",
+                   layout="centered",
+                   initial_sidebar_state="collapsed")
 
 # Links de imágenes como variables
 img_negro = "https://www.wearfigs.com/i/contentful/5j6wpslh72e4/1WlkcV0JKNu0fJ5gvK5u61/cf0be2e0ca2e9019fb730a82fb36a9c4/HP_Color_Carousel_288x288__BLACK.jpg?fm=webp&w=180"
@@ -90,11 +94,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
 # Configurar estado inicial
-# Configurar estado inicial
-st.set_page_config(page_title="Encuesta de Pijamas Quirúrgicas", 
-                   layout="centered", initial_sidebar_state="collapsed", theme={"base": "light"})
 if 'mostrar_encuesta' not in st.session_state:
     st.session_state.mostrar_encuesta = False
 
